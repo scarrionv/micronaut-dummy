@@ -1,0 +1,27 @@
+{
+  "name": "micronaut-dummy",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "release": "standard-version",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scarrionv/micronaut-dummy.git"
+  },
+  "keywords": [
+    "micronaut",
+    "java"
+  ],
+  "author": "Santiago Carrión",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scarrionv/micronaut-dummy/issues"
+  },
+  "homepage": "https://github.com/scarrionv/micronaut-dummy#readme",
+  "devDependencies": {
+    "standard-version": "^9.5.0"
+  }
+}
