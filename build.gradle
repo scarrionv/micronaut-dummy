@@ -58,7 +58,7 @@ micronaut {
 
 
 
-configurations.all {
+configurations.configureEach {
     resolutionStrategy.dependencySubstitution {
         substitute(module("io.micronaut:micronaut-jackson-databind"))
             .using(module("io.micronaut.serde:micronaut-serde-jackson:1.5.0"))
@@ -67,7 +67,7 @@ configurations.all {
 
 import groovy.json.JsonSlurper
 def version(){
-    def versionFile = file('version.json')
+    def versionFile = file('package.json')
     def json = new JsonSlurper().parseText(versionFile.text)
-    println(json.version)
+    return json.version
 }
