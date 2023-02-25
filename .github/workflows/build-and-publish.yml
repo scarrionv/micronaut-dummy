@@ -4,27 +4,13 @@ on:
   push:
     branches:
       - main
-env:
-  GRAALVM_HOME: /usr/lib/graalvm-ce-java17-21.2.0
-
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup GraalVM
-        uses: graalvm/setup-graalvm@v1
-        with:
-          graalvm-version: 'java17'
-          java-version: 'java17'
-          distribution: 'community'
-      - name: Build with Gradle
-        run: ./gradlew build --no-daemon
-      - name: Start session
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Generate container
-        run: ./gradlew jib --image=ghcr.io/scarrionv/micronaut-dummy:${{ github.sha }}
+      - name: Checkout project sources
+        uses: actions/checkout@v2
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Run build with Gradle Wrapper
+        run: ./gradlew build
