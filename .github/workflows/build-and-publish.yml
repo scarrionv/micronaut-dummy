@@ -18,10 +18,6 @@ jobs:
           graalvm-version: 'java17'
           java-version: 'java17'
           distribution: 'community'
-      - name: Setup Gradle
-        uses: gradle/setup-gradle@v1
-        with:
-          gradle-version: '7.3.3'
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
       - name: Start session
