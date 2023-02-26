@@ -37,15 +37,16 @@ java {
 tasks {
     jib {
         from {
-            image = 'azul/zulu-openjdk:17-jre'
+            image = 'openjdk:alpine'
         }
         to {
-            image = 'ghcr.io/scarrionv/micronaut-dummy:latest'
+            image = 'ghcr.io/scarrionv/micronaut-dummy'
             tags = ['latest']
         }
         container {
             jvmFlags = ['-Djava.awt.headless=true', '-Xmx2048m']
             mainClass = 'com.scarrionv.Application'
+            ports = ['8080']
         }
     }
 }
