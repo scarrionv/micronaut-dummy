@@ -37,17 +37,14 @@ java {
 tasks {
     jib {
         from {
-            image = 'openjdk:alpine'
+            image = 'azul/zulu-openjdk-alpine:17'
         }
         to {
             image = 'ghcr.io/scarrionv/micronaut-dummy'
             tags = ['latest']
         }
         container {
-            jvmFlags = ['-Xms512m']
-            mainClass = 'com.scarrionv.Application'
             ports = ['8080']
-            format = 'OCI'
         }
     }
 }
@@ -62,17 +59,17 @@ micronaut {
 }
 
 
-
 configurations.configureEach {
     resolutionStrategy.dependencySubstitution {
         substitute(module("io.micronaut:micronaut-jackson-databind"))
-            .using(module("io.micronaut.serde:micronaut-serde-jackson:1.5.0"))
+                .using(module("io.micronaut.serde:micronaut-serde-jackson:1.5.0"))
     }
 }
 
 import groovy.json.JsonSlurper
-def version(){
+
+def version() {
     def versionFile = file('package.json')
     def json = new JsonSlurper().parseText(versionFile.text)
-    return json.version
+    return json.version.toString()
 }
