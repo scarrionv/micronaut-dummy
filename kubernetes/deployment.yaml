@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micronaut-dummy-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: micronaut-dummy
+  template:
+    metadata:
+      labels:
+        app: micronaut-dummy
+    spec:
+      containers:
+        - name: micronaut-dummy
+          image: ghcr.io/scarrionv/micronaut-dummy:latest
+          env:
+            - name: SERVER_PORT
+              value: "3001"

@@ -43,9 +43,6 @@ tasks {
             image = 'ghcr.io/scarrionv/micronaut-dummy'
             tags = ['latest']
         }
-        container {
-            ports = ['8080']
-        }
     }
 }
 graalvmNative.toolchainDetection = false
