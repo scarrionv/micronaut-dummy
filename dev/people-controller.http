@@ -1,0 +1,14 @@
+### Create person
+POST {{schema}}{{host}}:{{port}}/people
+Content-Type: application/json
+
+{
+  "name": "John"
+}
+
+### Get person by id
+GET {{schema}}{{host}}:{{port}}/people/3
+Accept: application/json
+
+### Get all people
+GET {{schema}}{{host}}:{{port}}/people

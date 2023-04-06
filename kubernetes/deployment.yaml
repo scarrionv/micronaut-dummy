@@ -15,6 +15,6 @@ spec:
       containers:
         - name: micronaut-dummy
           image: ghcr.io/scarrionv/micronaut-dummy:latest
-          env:
-            - name: SERVER_PORT
-              value: "3001"
+          ports:
+            - containerPort: 8080
+              name: http-dummy

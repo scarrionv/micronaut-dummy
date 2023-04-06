@@ -1,6 +1,0 @@
-applicationType: default
-defaultPackage: com.scarrionv
-testFramework: junit
-sourceLanguage: java
-buildTool: gradle
-features: [annotation-api, app-name, gradle, http-client, java, java-application, jib, junit, lombok, micronaut-build, mockito, netty-server, readme, serialization-jackson, shade, slf4j-simple, yaml]
