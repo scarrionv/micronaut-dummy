@@ -3,3 +3,10 @@ micronaut:
     name: micronautDummy
   server:
     port: ${SERVER_PORT:8080}
+  metrics:
+    enabled: true
+    export:
+      prometheus:
+        enabled: true
+        step: PT1M
+        descriptions: true
