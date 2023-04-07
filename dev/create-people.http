@@ -1,0 +1,39 @@
+### Create person
+POST {{schema}}{{host}}:{{port}}/people
+Content-Type: application/json
+
+{
+  "name": "John"
+}
+
+### Create person
+POST {{schema}}{{host}}:{{port}}/people
+Content-Type: application/json
+
+{
+  "name": "Peter"
+}
+
+### Create person
+POST {{schema}}{{host}}:{{port}}/people
+Content-Type: application/json
+
+{
+  "name": "Lucy"
+}
+
+### Create person
+POST {{schema}}{{host}}:{{port}}/people
+Content-Type: application/json
+
+{
+  "name": "Laura"
+}
+
+### Create person
+POST {{schema}}{{host}}:{{port}}/people
+Content-Type: application/json
+
+{
+  "name": "Kevin"
+}

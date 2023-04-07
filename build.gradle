@@ -1,5 +1,5 @@
 plugins {
-    id("io.micronaut.application") version "3.7.2"
+    id("io.micronaut.application") version "3.7.4"
     id("com.google.cloud.tools.jib") version "3.3.1"
 }
 
@@ -13,16 +13,20 @@ repositories {
 dependencies {
     annotationProcessor("org.projectlombok:lombok")
     annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor "io.micronaut:micronaut-inject-java:$micronautVersion"
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
+    implementation("io.micronaut.rxjava3:micronaut-rxjava3:$micronautRxjava3Version")
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("jakarta.annotation:jakarta.annotation-api")
-    implementation 'org.codehaus.groovy:groovy-json:3.0.9'
-    compileOnly("org.projectlombok:lombok")
-    runtimeOnly("org.slf4j:slf4j-simple")
-    testImplementation("org.mockito:mockito-core")
     implementation("io.micronaut:micronaut-validation")
-
+    implementation("io.micronaut:micronaut-aop:$micronautAOPVersion")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-core")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-statsd")
+    implementation("io.micronaut:micronaut-management")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus")
+    compileOnly("org.projectlombok:lombok")
+    testImplementation("org.mockito:mockito-core")
 }
 
 
@@ -41,7 +45,7 @@ tasks {
         }
         to {
             image = 'ghcr.io/scarrionv/micronaut-dummy'
-            tags = ['latest']
+            tags = ['latest', version()]
         }
     }
 }
@@ -59,7 +63,7 @@ micronaut {
 configurations.configureEach {
     resolutionStrategy.dependencySubstitution {
         substitute(module("io.micronaut:micronaut-jackson-databind"))
-                .using(module("io.micronaut.serde:micronaut-serde-jackson:1.5.0"))
+                .using(module("io.micronaut.serde:micronaut-serde-jackson:1.5.2"))
     }
 }
 
