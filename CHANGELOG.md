@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/scarrionv/micronaut-dummy/compare/v0.1.0...v0.1.1) (2023-04-21)
+
+
+### Features
+
+* Update README.md ([7b57fd8](https://github.com/scarrionv/micronaut-dummy/commit/7b57fd8bdc0322e4ba3772e7ec66d2afbcc1e6c2))
+
 ## [0.1.0](https://github.com/scarrionv/micronaut-dummy/compare/v0.0.3...v0.1.0) (2023-04-07)
 
 
