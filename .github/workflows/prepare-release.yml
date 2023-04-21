@@ -1,7 +1,9 @@
-name: Prepare release
+name: Release on PR Open
 
 on:
   pull_request:
+    branches:
+      - main
     types: [opened]
 
 jobs:
@@ -11,10 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.head_ref }}
+      - name: Set up Git user
+        run: |
+          git config user.email "scarrionv@gmail.com"
+          git config user.name "Santiago Carrión"
       - name: Install dependencies
         run: npm install
-      - name: Release
+      - name: Run release script
         run: npm run release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
