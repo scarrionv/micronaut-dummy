@@ -29,7 +29,7 @@ public class LogMethodInterceptor implements MethodInterceptor<Object, Object> {
     }
 
     private void logMethod(String methodName, MethodInvocationContext<Object, Object> context) {
-        log.info("Calling method [{}] with arguments [{}]", methodName, getArguments(context));
+        log.info("Calling method [{}] with arguments [{}].", methodName, getArguments(context));
     }
 
     private void addMetricsIfNecessary(String methodName, MethodInvocationContext<Object, Object> context) {
