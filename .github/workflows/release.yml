@@ -1,10 +1,10 @@
-name: Release on PR Open
+name: Release
 
 on:
   pull_request:
     branches:
       - main
-    types: [opened]
+    types: [closed]
 
 jobs:
   release:
