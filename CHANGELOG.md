@@ -9,9 +9,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * This is just a test ([8a8ef52](https://github.com/scarrionv/micronaut-dummy/commit/8a8ef52d60ce17fda91f77ccbf8f10135af3a2d1))
 
-### 0.1.4 (2023-04-22)
-
-
 ### Features
 
 * initial commit ([c39fab8](https://github.com/scarrionv/micronaut-dummy/commit/c39fab85e68ac521c92c7331046aa45fa42df242))
