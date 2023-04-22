@@ -23,4 +23,4 @@ jobs:
       - name: Run release script
         run: npm run release
       - name: Push changes
-      - run: git push origin HEAD:develop
+        run: git push origin HEAD:develop
