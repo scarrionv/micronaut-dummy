@@ -3,7 +3,7 @@ package com.scarrionv.application;
 
 import com.scarrionv.domain.PeopleService;
 import com.scarrionv.domain.Person;
-import com.scarrionv.utils.LogMethod;
+import com.scarrionv.application.annotations.LogMethod;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;

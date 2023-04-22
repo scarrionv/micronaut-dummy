@@ -1,4 +1,4 @@
-package com.scarrionv.utils;
+package com.scarrionv.infraestructure.logging;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micronaut.aop.MethodInterceptor;
