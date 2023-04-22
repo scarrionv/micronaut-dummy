@@ -3,6 +3,7 @@ package com.scarrionv.utils;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micronaut.aop.MethodInterceptor;
 import io.micronaut.aop.MethodInvocationContext;
+import io.micronaut.core.annotation.NonNull;
 import jakarta.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,11 +20,16 @@ public class LogMethodInterceptor implements MethodInterceptor<Object, Object> {
 
     @Override
     public Object intercept(MethodInvocationContext<Object, Object> context) {
-        StringJoiner joiner = new StringJoiner("; ");
-        context.getParameterValueMap().forEach((param, value) -> joiner.add("Parameter: " + param + ", value: " + value));
         String methodName = context.getMethodName();
-        log.info("Calling method [{}] with arguments [{}]", methodName, joiner);
+        log.info("Calling method [{}] with arguments [{}]", methodName, getArguments(context));
         meterRegistry.counter("controller", "method", methodName).increment();
         return context.proceed();
+    }
+
+    @NonNull
+    private static StringJoiner getArguments(MethodInvocationContext<Object, Object> context) {
+        StringJoiner joiner = new StringJoiner("; ");
+        context.getParameterValueMap().forEach((param, value) -> joiner.add("Parameter: " + param + ", value: " + value));
+        return joiner;
     }
 }
