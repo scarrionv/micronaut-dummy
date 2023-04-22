@@ -25,8 +25,4 @@ jobs:
       - name: Run release script
         run: npm run release
       - name: Push changes to develop
-        run: git push origin HEAD:main
-      - name: Push changes to main
-        run: git push origin HEAD:main
-      - name: Merge main to develop
-        run: git merge main
+        run: git push origin HEAD:develop
