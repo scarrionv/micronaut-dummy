@@ -1,5 +1,6 @@
-package com.scarrionv.utils;
+package com.scarrionv.application.annotations;
 
+import com.scarrionv.infraestructure.logging.LogMethodInterceptor;
 import io.micronaut.aop.Around;
 import io.micronaut.context.annotation.Type;
 
