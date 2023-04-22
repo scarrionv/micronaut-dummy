@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Extract branch name
         shell: bash
-        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT; echo $GITHUB_OUTPUT
         id: extract_branch
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,4 +29,4 @@ jobs:
       - name: Run release script
         run: npm run release
       - name: Push changes to develop
-        run: git push origin --tags HEAD:${{ steps.extract_branch.outputs.branch }}
+        run: git push origin --tags HEAD:${{ github.event.pull_request.head.ref }}
