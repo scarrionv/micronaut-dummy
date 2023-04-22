@@ -13,7 +13,7 @@ jobs:
       CI_COMMIT_AUTHOR: Continuous Integration
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
       - name: Set up Git user
@@ -24,5 +24,9 @@ jobs:
         run: npm install
       - name: Run release script
         run: npm run release
-      - name: Push changes
-        run: git push
+      - name: Push changes to develop
+        run: git push origin HEAD:main
+      - name: Push changes to main
+        run: git push origin HEAD:main
+      - name: Merge main to develop
+        run: git merge main
