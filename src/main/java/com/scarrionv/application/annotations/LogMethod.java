@@ -1,6 +1,6 @@
 package com.scarrionv.application.annotations;
 
-import com.scarrionv.infraestructure.logging.LogMethodInterceptor;
+import com.scarrionv.application.interceptors.LogMethodInterceptor;
 import io.micronaut.aop.Around;
 import io.micronaut.context.annotation.Type;
 
@@ -14,4 +14,5 @@ import java.lang.annotation.Target;
 @Around()
 @Type(LogMethodInterceptor.class)
 public @interface LogMethod {
+    boolean metrics() default true;
 }
