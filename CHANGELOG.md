@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.4 (2023-04-22)
+
+
+### Features
+
+* Code refactor ([40a1bfe](https://github.com/scarrionv/micronaut-dummy/commit/40a1bfe9033e6e2d8da503d801b59c238298e664))
+
 ### 0.1.3 (2023-04-22)
 
 ### 0.1.2 (2023-04-22)
