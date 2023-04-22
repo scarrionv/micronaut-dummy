@@ -26,6 +26,7 @@ dependencies {
     implementation("io.micronaut:micronaut-management")
     implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus")
     compileOnly("org.projectlombok:lombok")
+    compileOnly("com.google.code.findbugs:jsr305:3.0.2") // To avoid "unknown enum constant When.MAYBE" waring when building
     testImplementation("org.mockito:mockito-core")
 }
 
