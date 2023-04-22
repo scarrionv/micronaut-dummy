@@ -46,7 +46,7 @@ git clone https://github.com/scarrionv/micronaut-dummy.git micronaut-dummy
 
 ### Run
 
-Be sure docker is running in your compute. Use docker compose to run the project
+Be sure docker is running. Use docker compose to run the project
 
 
 #### Start 
