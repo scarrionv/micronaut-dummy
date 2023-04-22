@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.0.0 (2023-04-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* This is just a pipeline test 2
+
+* Testing mayor version change 2 ([445f5ee](https://github.com/scarrionv/micronaut-dummy/commit/445f5ee54397af541bedf50c4cee8628f5bd1d4a))
+
 ## 0.2.0 (2023-04-22)
 
 
