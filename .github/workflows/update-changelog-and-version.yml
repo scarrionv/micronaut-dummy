@@ -1,4 +1,4 @@
-name: Release
+name: Update Changelog and bump version
 
 on:
   pull_request:
@@ -12,17 +12,21 @@ jobs:
     env:
       CI_COMMIT_AUTHOR: Continuous Integration
     steps:
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
+        id: extract_branch
       - name: Checkout
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
       - name: Set up Git user
         run: |
-          git config user.email "carrionvs@gmail.com"
+          git config user.email "<>"
           git config user.name "${{ env.CI_COMMIT_AUTHOR }}"
       - name: Install dependencies
         run: npm install
       - name: Run release script
         run: npm run release
       - name: Push changes to develop
-        run: git push origin --tags HEAD:develop
+        run: git push origin --tags HEAD:${{ steps.extract_branch.outputs.branch }}
