@@ -7,7 +7,7 @@ on:
     types: [opened]
 
 jobs:
-  release:
+  update-changelog-and-version:
     runs-on: ubuntu-latest
     env:
       CI_COMMIT_AUTHOR: Continuous Integration
