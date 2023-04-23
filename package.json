@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "release": "standard-version",
+    "release-no-tag": "standard-version --skip.tag",
+    "release": "standard-version --skip.bump --skip.commit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
