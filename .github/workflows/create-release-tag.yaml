@@ -1,10 +1,10 @@
-name: Update Changelog and bump version
+name: Create release tag
 
 on:
   pull_request:
     branches:
       - main
-    types: [opened]
+    types: [closed]
 
 jobs:
   update-changelog-and-version:
@@ -23,6 +23,6 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run release script
-        run: npm run changelog-and-bump-version
-      - name: Push changes to develop
-        run: git push origin --tags HEAD:develop
+        run: npm run release
+      - name: Push changes
+        run: git push origin --tags
