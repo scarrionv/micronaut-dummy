@@ -1,12 +1,14 @@
-package com.scarrionv.application.interceptors;
+package com.scarrionv.application.interceptors.method;
 
-import com.scarrionv.application.annotations.LogMethod;
+import com.scarrionv.application.annotations.LogAndTrace;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micronaut.aop.MethodInterceptor;
 import io.micronaut.aop.MethodInvocationContext;
 import io.micronaut.core.type.Argument;
 import jakarta.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.StringJoiner;
 
@@ -29,14 +31,15 @@ public class LogMethodInterceptor implements MethodInterceptor<Object, Object> {
     }
 
     private void logMethod(String methodName, MethodInvocationContext<Object, Object> context) {
+        Logger log = LoggerFactory.getLogger(context.getDeclaringType());
         log.info("Calling method [{}] with arguments [{}].", methodName, getArguments(context));
     }
 
     private void addMetricsIfNecessary(String methodName, MethodInvocationContext<Object, Object> context) {
-        context.findAnnotation(LogMethod.class)
+        context.findAnnotation(LogAndTrace.class)
                 .flatMap(logMethodAnnotationValue -> logMethodAnnotationValue.get(METRICS_PARAM_NAME, Argument.BOOLEAN))
                 .ifPresent(isMetric -> {
-                    if(Boolean.TRUE.equals(isMetric)){
+                    if (Boolean.TRUE.equals(isMetric)) {
                         addMetrics(methodName);
                     }
                 });
@@ -50,8 +53,8 @@ public class LogMethodInterceptor implements MethodInterceptor<Object, Object> {
     }
 
     private static StringJoiner getArguments(MethodInvocationContext<Object, Object> context) {
-        StringJoiner joiner = new StringJoiner("; ");
-        context.getParameterValueMap().forEach((param, value) -> joiner.add("Parameter: " + param + ", value: " + value));
+        StringJoiner joiner = new StringJoiner(", ");
+        context.getParameterValueMap().forEach((param, value) -> joiner.add(param + "=" + value));
         return joiner;
     }
 }

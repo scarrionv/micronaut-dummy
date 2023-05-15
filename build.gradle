@@ -1,5 +1,6 @@
 plugins {
-    id("io.micronaut.application") version "3.7.4"
+    id("io.micronaut.application") version "$micronautPluginVersion"
+    id("io.micronaut.aot") version "$micronautPluginVersion"
     id("com.google.cloud.tools.jib") version "3.3.1"
 }
 
@@ -10,24 +11,38 @@ repositories {
     mavenCentral()
 }
 
+micronaut {
+    version "$micronautVersion"
+}
+
 dependencies {
     annotationProcessor("org.projectlombok:lombok")
     annotationProcessor("io.micronaut:micronaut-http-validation")
-    annotationProcessor "io.micronaut:micronaut-inject-java:$micronautVersion"
+    annotationProcessor "io.micronaut:micronaut-inject-java"
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
-    implementation("io.micronaut.rxjava3:micronaut-rxjava3:$micronautRxjava3Version")
-    implementation("io.micronaut:micronaut-http-client")
-    implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("jakarta.annotation:jakarta.annotation-api")
-    implementation("io.micronaut:micronaut-validation")
-    implementation("io.micronaut:micronaut-aop:$micronautAOPVersion")
     implementation("io.micronaut.micrometer:micronaut-micrometer-core")
-    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-statsd")
-    implementation("io.micronaut:micronaut-management")
     implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus")
+    implementation("io.micronaut:micronaut-validation")
+    implementation("io.micronaut:micronaut-aop")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-management")
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("io.micronaut:micronaut-tracing")
+    implementation("io.micronaut.reactor:micronaut-reactor")
+    implementation("io.micronaut.reactor:micronaut-reactor-http-client")
+    implementation("io.micronaut:micronaut-jackson-databind:3.9.1")
+    implementation("io.opentracing.brave:brave-opentracing:1.0.0")
+    runtimeOnly("io.zipkin.brave:brave-instrumentation-http:5.16.0")
+    runtimeOnly("io.zipkin.reporter2:zipkin-reporter")
+    runtimeOnly("ch.qos.logback:logback-classic")
     compileOnly("org.projectlombok:lombok")
     compileOnly("com.google.code.findbugs:jsr305:3.0.2") // To avoid "unknown enum constant When.MAYBE" waring when building
     testImplementation("org.mockito:mockito-core")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
+    annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
+    implementation("io.micronaut.serde:micronaut-serde-jackson")
 }
 
 
@@ -57,14 +72,6 @@ micronaut {
     processing {
         incremental(true)
         annotations("com.scarrionv.*")
-    }
-}
-
-
-configurations.configureEach {
-    resolutionStrategy.dependencySubstitution {
-        substitute(module("io.micronaut:micronaut-jackson-databind"))
-                .using(module("io.micronaut.serde:micronaut-serde-jackson:1.5.2"))
     }
 }
 

@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: micronautDummy
+    name: micronaut-dummy
   server:
     port: ${SERVER_PORT:8080}
   metrics:
@@ -10,6 +10,13 @@ micronaut:
         enabled: true
         step: PT1M
         descriptions: true
+tracing:
+  zipkin:
+    http:
+      url: ${ZIPKIN_URL:http://localhost:9411}
+    enabled: true
+    sampler:
+      probability: 1
 endpoints:
   prometheus:
     sensitive: false

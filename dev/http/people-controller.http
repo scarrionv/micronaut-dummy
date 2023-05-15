@@ -1,6 +1,7 @@
 ### Create person
 POST {{schema}}{{host}}:{{port}}/people
 Content-Type: application/json
+tenantId: 12e413
 
 {
   "name": "John"
@@ -9,6 +10,8 @@ Content-Type: application/json
 ### Get person by id
 GET {{schema}}{{host}}:{{port}}/people/3
 Accept: application/json
+tenantId: 12e4asd13
 
 ### Get all people
 GET {{schema}}{{host}}:{{port}}/people
+tenantId: 1244kjhw23

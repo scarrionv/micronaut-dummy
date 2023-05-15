@@ -1,8 +1,9 @@
 package com.scarrionv.application.annotations;
 
-import com.scarrionv.application.interceptors.LogMethodInterceptor;
+import com.scarrionv.application.interceptors.method.LogMethodInterceptor;
 import io.micronaut.aop.Around;
 import io.micronaut.context.annotation.Type;
+import io.micronaut.tracing.annotation.NewSpan;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -13,6 +14,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Around()
 @Type(LogMethodInterceptor.class)
-public @interface LogMethod {
-    boolean metrics() default true;
+@NewSpan
+public @interface LogAndTrace {
+    boolean metrics() default false;
 }
